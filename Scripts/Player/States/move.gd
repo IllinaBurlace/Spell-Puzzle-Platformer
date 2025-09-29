@@ -3,6 +3,7 @@ extends State
 
 func enter() -> void:
 	player.sprite.modulate = Color8(255, 0, 0)
+	player.velocity.y = 0
 
 func process_state() -> State:
 	if !Input.get_axis("left", "right"):
