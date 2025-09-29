@@ -2,6 +2,11 @@
 class_name State
 extends Node
 
+var player: Player
+
+func _ready() -> void:
+	player = get_parent().get_parent()
+
 func process_frame(_delta: float) -> void:
 	pass
 
