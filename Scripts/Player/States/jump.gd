@@ -1,0 +1,2 @@
+class_name PlayerJumpState
+extends Node
