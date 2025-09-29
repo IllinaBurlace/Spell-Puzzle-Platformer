@@ -8,6 +8,10 @@ func enter() -> void:
 	entry_y = player.position.y
 	player.velocity.y -= 500
 
+func process_phys(_delta: float) -> void:
+	var direction = Input.get_axis("left", "right")
+	player.velocity.x = direction * 200
+
 func process_state() -> State:
 	if player.is_on_floor() and player.velocity.y >= 0:
 		return player.states[0]
