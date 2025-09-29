@@ -3,6 +3,8 @@ extends CharacterBody2D
 
 var states: Array[State]
 
+var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
+
 @onready
 var current_state: State = $States/Idle
 @onready
@@ -20,6 +22,10 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	current_state.process_phys(delta)
+
+	if !is_on_floor():
+		velocity.y += gravity * delta
+	move_and_slide()
 
 func state_machine() -> void:
 	var new_state = current_state.process_state()
