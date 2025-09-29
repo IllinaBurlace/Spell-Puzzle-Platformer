@@ -1,2 +1,2 @@
 class_name PlayerMoveState
-extends Node
+extends State

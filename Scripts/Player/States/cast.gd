@@ -1,2 +1,2 @@
 class_name PlayerCastState
-extends Node
+extends State

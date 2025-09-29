@@ -1,2 +1,2 @@
 class_name PlayerIdleState
-extends Node
+extends State

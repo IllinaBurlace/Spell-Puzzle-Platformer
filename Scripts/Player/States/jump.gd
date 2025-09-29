@@ -1,2 +1,2 @@
 class_name PlayerJumpState
-extends Node
+extends State
