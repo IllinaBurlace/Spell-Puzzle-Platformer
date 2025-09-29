@@ -8,7 +8,7 @@ func process_frame(_delta: float) -> void:
 func process_phys(_delta: float) -> void:
 	pass
 
-func process_state(_delta: float) -> State:
+func process_state() -> State:
 	return null
 
 func enter() -> void:
