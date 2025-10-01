@@ -5,3 +5,6 @@
 # import artifacts
 *.uid
 *.import
+
+# exports
+export_presets.cfg
