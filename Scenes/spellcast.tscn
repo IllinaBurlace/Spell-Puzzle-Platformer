@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://li0xv5opve6i"]
+
+[ext_resource type="Script" uid="uid://d3b1tk6g7vkhw" path="res://Scripts/Player/spellcast.gd" id="1_2rayj"]
+[ext_resource type="Texture2D" uid="uid://cxmyo2tqiigdf" path="res://icon.svg" id="2_ukjio"]
+
+[node name="Spellcast" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2rayj")
+
+[node name="MouseTracker" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="MouseTracker"]
+texture = ExtResource("2_ukjio")
+
+[node name="Glyph" type="Line2D" parent="."]
