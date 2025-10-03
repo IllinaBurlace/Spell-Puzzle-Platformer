@@ -10,7 +10,6 @@ func _ready() -> void:
 func enter() -> void:
 	player.sprite.modulate = Color8(0, 0, 255)
 	spell.visible = true
-	spell.line.add_point(get_viewport().get_mouse_position())
 
 func exit() -> void:
 	spell.visible = false

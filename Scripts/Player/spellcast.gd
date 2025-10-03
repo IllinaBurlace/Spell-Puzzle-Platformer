@@ -5,8 +5,6 @@ extends Control
 var epsilon: float = 30.0
 @onready
 var player: Player = get_parent()
-@onready
-var mouse_tracker: Node2D = $MouseTracker
 @onready 
 var line: Line2D = $Glyph
 
@@ -14,14 +12,11 @@ func _process(delta: float) -> void:
 	global_position = Vector2.ZERO
 
 	if visible:
-		mouse_tracker.global_position = get_viewport().get_mouse_position()
-
 		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-			line.add_point(mouse_tracker.global_position)
+			line.add_point(get_viewport().get_mouse_position())
 func cast() -> void:
 	print("Cast!")
 	var simple = simplify(line.get_points())
-	print(line.points)
 	print(simple)
 	line.clear_points()
 
@@ -44,7 +39,9 @@ func simplify(input: PackedVector2Array) -> PackedVector2Array:
 	var ret: PackedVector2Array = []
 	if highest["dist"] > epsilon:
 		ret = simplify(input.slice(0, highest["id"] + 1))
-		ret.append_array(simplify(input.slice(highest["id"] + 1, -1)))
+		var temp: PackedVector2Array = simplify(input.slice(highest["id"] + 1, -1))
+		temp.remove_at(0)
+		ret.append_array(temp)
 	else:
 		ret = [input[0], input[-1]]
 

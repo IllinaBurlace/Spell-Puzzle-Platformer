@@ -34,4 +34,3 @@ script = ExtResource("5_8erm5")
 
 [node name="Spellcast" parent="." instance=ExtResource("6_x3wgy")]
 visible = false
-epsilon = 60.0
