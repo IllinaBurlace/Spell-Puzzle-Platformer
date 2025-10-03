@@ -2,6 +2,7 @@ class_name PlayerCastState
 extends State
 
 var spell: SpellCast
+var release: bool = false
 
 func _ready() -> void:
 	super()
@@ -15,7 +16,12 @@ func exit() -> void:
 	spell.visible = false
 	spell.cast()
 
+func process_frame(_delta: float) -> void:
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+		release = true
+
 func process_state() -> State:
-	if Input.is_action_just_pressed("cast"):
+	if !Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and release:
+		release = false
 		return player.states[0]
 	return null
