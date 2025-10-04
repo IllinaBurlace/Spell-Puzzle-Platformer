@@ -10,6 +10,8 @@ var current_state: State = $States/Idle
 @onready
 var sprite: Polygon2D = $Polygon2D
 
+var able_to_cast: bool = false
+
 func _ready() -> void:
 	for node in $States.get_children():
 		states.append(node)

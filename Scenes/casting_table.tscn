@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://hnked78bqli5"]
+
+[ext_resource type="Script" uid="uid://c2141lta3sgr4" path="res://Scripts/casting_table.gd" id="1_87v6d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_quwxw"]
+size = Vector2(16, 16)
+
+[node name="CastingTable" type="Area2D"]
+script = ExtResource("1_87v6d")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(0, 0, 16, 0, 16, 16, 0, 16)
+uv = PackedVector2Array(-160, -43.5, -83, -42.5, -80, 10.5, -177, 16.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(8, 8)
+shape = SubResource("RectangleShape2D_quwxw")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
