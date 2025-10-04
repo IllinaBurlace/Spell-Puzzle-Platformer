@@ -8,6 +8,9 @@ var player: Player = get_parent()
 @onready 
 var line: Line2D = $Glyph
 
+@onready
+var spells: Array = preload("res://Scripts/spells.json").data
+
 func _process(delta: float) -> void:
 	global_position = Vector2.ZERO
 
@@ -18,7 +21,8 @@ func cast() -> void:
 	print("Cast!")
 	var simple = simplify(line.get_points())
 	var angles = curve_to_anglesig(simple)
-	print(angles)
+	var spell = anglesig_match(angles)
+	print(spell)
 	line.clear_points()
 
 func simplify(input: PackedVector2Array) -> PackedVector2Array:
@@ -53,15 +57,26 @@ func curve_to_anglesig(input: PackedVector2Array) -> PackedFloat64Array:
 	
 	var idx: int = 0
 	for point in input:
+		var unsnapped_angle: float = 0.0
+		var snapped_angle: float = 0.0
 		if idx < input.size() - 1:
-			var unsnapped_angle: float = point.angle_to_point(input[idx + 1])
-			var snapped_angle: float = snappedf(unsnapped_angle, PI/4)
-			ret.append(rad_to_deg(snapped_angle))
+			unsnapped_angle = point.angle_to_point(input[idx + 1])
+			snapped_angle = snappedf(unsnapped_angle, PI/4)
 		elif idx == input.size() - 1:
-			var unsnapped_angle: float = point.angle_to_point(input[0])
-			var snapped_angle: float = snappedf(unsnapped_angle, PI/4)
+			unsnapped_angle = point.angle_to_point(input[0])
+			snapped_angle = snappedf(unsnapped_angle, PI/4)
+		if rad_to_deg(snapped_angle == -180.0):
+			ret.append(180.0)
+		else:
 			ret.append(rad_to_deg(snapped_angle))
 		idx += 1
 	
 	return ret
 
+func anglesig_match(input: PackedFloat64Array) -> String:
+	for spell in spells:
+		var angles: PackedFloat64Array = spell["Angles"]
+		if angles == input:
+			return spell["Name"]
+	
+	return "Incorrect"
