@@ -14,7 +14,6 @@ func enter() -> void:
 
 func exit() -> void:
 	spell.visible = false
-	spell.cast()
 
 func process_frame(_delta: float) -> void:
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
@@ -22,6 +21,10 @@ func process_frame(_delta: float) -> void:
 
 func process_state() -> State:
 	if !Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and release:
+		release = false
+		spell.cast()
+		return player.states[0]
+	if Input.is_action_just_pressed("ui_cancel"):
 		release = false
 		return player.states[0]
 	return null
