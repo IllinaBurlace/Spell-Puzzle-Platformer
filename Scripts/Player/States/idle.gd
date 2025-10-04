@@ -10,6 +10,6 @@ func process_state() -> State:
 		return player.states[1]
 	if Input.is_action_just_pressed("jump"):
 		return player.states[2]
-	if Input.is_action_just_pressed("cast"):
+	if Input.is_action_just_pressed("cast") and player.able_to_cast:
 		return player.states[3]
 	return null
