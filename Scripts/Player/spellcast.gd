@@ -17,7 +17,8 @@ func _process(delta: float) -> void:
 func cast() -> void:
 	print("Cast!")
 	var simple = simplify(line.get_points())
-	print(simple)
+	var angles = curve_to_anglesig(simple)
+	print(angles)
 	line.clear_points()
 
 func simplify(input: PackedVector2Array) -> PackedVector2Array:
@@ -46,3 +47,21 @@ func simplify(input: PackedVector2Array) -> PackedVector2Array:
 		ret = [input[0], input[-1]]
 
 	return ret
+
+func curve_to_anglesig(input: PackedVector2Array) -> PackedFloat64Array:
+	var ret: PackedFloat64Array = []
+	
+	var idx: int = 0
+	for point in input:
+		if idx < input.size() - 1:
+			var unsnapped_angle: float = point.angle_to_point(input[idx + 1])
+			var snapped_angle: float = snappedf(unsnapped_angle, PI/4)
+			ret.append(rad_to_deg(snapped_angle))
+		elif idx == input.size() - 1:
+			var unsnapped_angle: float = point.angle_to_point(input[0])
+			var snapped_angle: float = snappedf(unsnapped_angle, PI/4)
+			ret.append(rad_to_deg(snapped_angle))
+		idx += 1
+	
+	return ret
+
