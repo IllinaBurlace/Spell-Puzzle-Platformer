@@ -19,10 +19,10 @@ func _process(delta: float) -> void:
 			line.add_point(get_viewport().get_mouse_position())
 func cast() -> void:
 	print("Cast!")
-	var simple = simplify(line.get_points())
-	var angles = curve_to_anglesig(simple)
-	var spell = anglesig_match(angles)
-	print(spell)
+	var simple: PackedVector2Array = simplify(line.get_points())
+	var angles: PackedFloat64Array = curve_to_anglesig(simple)
+	var spell: String = anglesig_match(angles)
+	player.cylinder.add_to_queue(spell)
 	line.clear_points()
 
 func simplify(input: PackedVector2Array) -> PackedVector2Array:
