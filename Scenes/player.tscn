@@ -34,6 +34,10 @@ script = ExtResource("4_3smsa")
 script = ExtResource("5_8erm5")
 
 [node name="Cylinder" parent="." instance=ExtResource("7_3smsa")]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
 
 [node name="Spellcast" parent="." instance=ExtResource("6_x3wgy")]
 visible = false

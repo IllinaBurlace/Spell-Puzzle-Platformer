@@ -9,6 +9,14 @@ var queue_length: int = 1
 func _process(delta: float) -> void:
 	global_position = Vector2.ZERO
 
+	for i in queue_length:
+		var label: Label = get_node("Slots/Slot" + String.num_int64(i + 1))
+		label.text = "Empty"
+
+	for i in current_queue.size():
+		var label: Label = get_node("Slots/Slot" + String.num_int64(i + 1))
+		label.text = current_queue[i]
+
 func cast() -> void:
 	if !current_queue.is_empty():
 		var spell: String = current_queue[0]
