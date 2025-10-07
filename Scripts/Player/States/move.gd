@@ -10,6 +10,10 @@ func enter() -> void:
 	player.sprite.modulate = Color8(255, 0, 0)
 	player.velocity.y = 0
 
+func process_frame(_delta: float) -> void:
+	if Input.is_action_just_pressed("spell"):
+		player.cylinder.cast()
+
 func process_phys(_delta: float) -> void:
 	direction = Input.get_axis("left", "right")
 	player.velocity.x = direction * speed

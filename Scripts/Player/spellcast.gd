@@ -4,7 +4,7 @@ extends Control
 @export
 var epsilon: float = 30.0
 @onready
-var player: Player = get_parent()
+var player: Player = get_parent().get_parent().get_parent()
 @onready 
 var line: Line2D = $Glyph
 
@@ -12,17 +12,15 @@ var line: Line2D = $Glyph
 var spells: Array = preload("res://Scripts/spells.json").data
 
 func _process(delta: float) -> void:
-	global_position = Vector2.ZERO
-
 	if visible:
 		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 			line.add_point(get_viewport().get_mouse_position())
 func cast() -> void:
 	print("Cast!")
-	var simple = simplify(line.get_points())
-	var angles = curve_to_anglesig(simple)
-	var spell = anglesig_match(angles)
-	print(spell)
+	var simple: PackedVector2Array = simplify(line.get_points())
+	var angles: PackedFloat64Array = curve_to_anglesig(simple)
+	var spell: String = anglesig_match(angles)
+	player.cylinder.add_to_queue(spell)
 	line.clear_points()
 
 func simplify(input: PackedVector2Array) -> PackedVector2Array:

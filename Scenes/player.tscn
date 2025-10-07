@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cywcer40qcjdc"]
+[gd_scene load_steps=9 format=3 uid="uid://cywcer40qcjdc"]
 
 [ext_resource type="Script" uid="uid://c7mt04lfrys5v" path="res://Scripts/Player/player.gd" id="1_v0iea"]
 [ext_resource type="Script" uid="uid://cqww0v2oy7w3c" path="res://Scripts/Player/States/idle.gd" id="2_fkybt"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://dqwynipt38kku" path="res://Scripts/Player/States/jump.gd" id="4_3smsa"]
 [ext_resource type="Script" uid="uid://drm820tb12vky" path="res://Scripts/Player/States/cast.gd" id="5_8erm5"]
 [ext_resource type="PackedScene" uid="uid://li0xv5opve6i" path="res://Scenes/spellcast.tscn" id="6_x3wgy"]
+[ext_resource type="PackedScene" uid="uid://db3v77bu7lukx" path="res://Scenes/cylinder.tscn" id="7_3smsa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f60y1"]
 
@@ -32,5 +33,14 @@ script = ExtResource("4_3smsa")
 [node name="Cast" type="Node" parent="States"]
 script = ExtResource("5_8erm5")
 
-[node name="Spellcast" parent="." instance=ExtResource("6_x3wgy")]
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
+
+[node name="Cylinder" parent="Camera2D/CanvasLayer" instance=ExtResource("7_3smsa")]
+
+[node name="Spellcast" parent="Camera2D/CanvasLayer" instance=ExtResource("6_x3wgy")]
 visible = false
+size_flags_horizontal = 1
+size_flags_vertical = 1
+metadata/_edit_use_anchors_ = true

@@ -6,7 +6,7 @@ var release: bool = false
 
 func _ready() -> void:
 	super()
-	spell = player.get_node("Spellcast")
+	spell = player.get_node("Camera2D/CanvasLayer/Spellcast")
 
 func enter() -> void:
 	player.sprite.modulate = Color8(0, 0, 255)

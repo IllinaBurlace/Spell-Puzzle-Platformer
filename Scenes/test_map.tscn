@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=4 uid="uid://bgg5f6s52r6ib"]
+[gd_scene load_steps=7 format=4 uid="uid://bgg5f6s52r6ib"]
 
-[ext_resource type="Texture2D" uid="uid://d18db1mpe6v74" path="res://Assets/New Piskel.png" id="1_orl8w"]
+[ext_resource type="Texture2D" uid="uid://ciywcupi7jlol" path="res://Assets/New Piskel.png" id="1_orl8w"]
 [ext_resource type="PackedScene" uid="uid://cywcer40qcjdc" path="res://Scenes/player.tscn" id="2_8xpg0"]
 [ext_resource type="PackedScene" uid="uid://hnked78bqli5" path="res://Scenes/casting_table.tscn" id="3_8xpg0"]
+[ext_resource type="PackedScene" uid="uid://bbgt23eislljd" path="res://Scenes/cylinder_upgrade.tscn" id="4_gbc2j"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gbc2j"]
 texture = ExtResource("1_orl8w")
@@ -24,3 +25,6 @@ position = Vector2(569, 324)
 
 [node name="CastingTable" parent="." instance=ExtResource("3_8xpg0")]
 position = Vector2(305, 416)
+
+[node name="CylinderUpgrade" parent="." instance=ExtResource("4_gbc2j")]
+position = Vector2(710, 396)
