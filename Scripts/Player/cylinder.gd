@@ -7,14 +7,12 @@ var current_queue: PackedStringArray = []
 var queue_length: int = 1
 
 func _process(delta: float) -> void:
-	global_position = Vector2.ZERO
-
 	for i in queue_length:
-		var label: Label = get_node("Slots/Slot" + String.num_int64(i + 1))
+		var label: Label = get_node("MarginContainer/VBoxContainer/Slot" + String.num_int64(6 - i))
 		label.text = "Empty"
 
 	for i in current_queue.size():
-		var label: Label = get_node("Slots/Slot" + String.num_int64(i + 1))
+		var label: Label = get_node("MarginContainer/VBoxContainer/Slot" + String.num_int64(6 - i))
 		label.text = current_queue[i]
 
 func cast() -> void:

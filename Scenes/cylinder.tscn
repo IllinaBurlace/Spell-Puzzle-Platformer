@@ -1,33 +1,46 @@
 [gd_scene load_steps=2 format=3 uid="uid://db3v77bu7lukx"]
 
-[ext_resource type="Script" uid="uid://b6uiv1bnrvxl7" path="res://Scripts/Player/cylinder.gd" id="1_787um"]
+[ext_resource type="Script" uid="uid://cki60fb40qkxd" path="res://Scripts/Player/cylinder.gd" id="1_787um"]
 
 [node name="Cylinder" type="Control"]
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_787um")
 
-[node name="Slots" type="VBoxContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
-offset_right = 50.0
-offset_bottom = 158.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_bottom = 10
 
-[node name="Slot1" type="Label" parent="Slots"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="Slot1" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Slot2" type="Label" parent="Slots"]
+[node name="Slot2" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Slot3" type="Label" parent="Slots"]
+[node name="Slot3" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Slot4" type="Label" parent="Slots"]
+[node name="Slot4" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Slot5" type="Label" parent="Slots"]
+[node name="Slot5" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Slot6" type="Label" parent="Slots"]
+[node name="Slot6" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2

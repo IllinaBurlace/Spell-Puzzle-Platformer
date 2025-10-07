@@ -10,7 +10,7 @@ var current_state: State = $States/Idle
 @onready
 var sprite: Polygon2D = $Polygon2D
 @onready
-var cylinder: Cylinder = $Cylinder
+var cylinder: Cylinder = $Camera2D/CanvasLayer/Cylinder
 
 var able_to_cast: bool = false
 

@@ -4,7 +4,7 @@ extends Control
 @export
 var epsilon: float = 30.0
 @onready
-var player: Player = get_parent()
+var player: Player = get_parent().get_parent().get_parent()
 @onready 
 var line: Line2D = $Glyph
 
@@ -12,8 +12,6 @@ var line: Line2D = $Glyph
 var spells: Array = preload("res://Scripts/spells.json").data
 
 func _process(delta: float) -> void:
-	global_position = Vector2.ZERO
-
 	if visible:
 		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 			line.add_point(get_viewport().get_mouse_position())
