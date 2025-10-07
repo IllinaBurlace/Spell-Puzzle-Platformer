@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwokdc8ptbdmm"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_tohp1"]
+friction = 0.9
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tohp1"]
+
+[node name="PhysCube" type="RigidBody2D"]
+modulate = Color(0.3372549, 0.29411766, 1, 1)
+physics_material_override = SubResource("PhysicsMaterial_tohp1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_tohp1")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2(-10, -10)
+polygon = PackedVector2Array(0, 0, 20, 0, 20, 20, 0, 20)
