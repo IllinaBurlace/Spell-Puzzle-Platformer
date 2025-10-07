@@ -25,8 +25,9 @@ func cast() -> void:
 
 func add_to_queue(spell: String) -> void:
 	if current_queue.size() < queue_length:
-		current_queue.append(spell)
-	
+		if spell != "Incorrect":
+			current_queue.append(spell)
+		
 
 func empty_queue() -> void:
 	current_queue.clear()
